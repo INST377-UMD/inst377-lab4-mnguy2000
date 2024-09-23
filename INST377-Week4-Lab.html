@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+
+    <title>INST377 - Lab 4</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            text-align: center;
+            background-color: #d6cbd3;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .section {
+            border: 2px solid black;
+            background-color: #eca1a6;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 45%;
+            min-width: 300px;
+            text-align: center;
+        }
+        button, input {
+            padding: 10px;
+            margin: 5px;
+        }
+        input {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="heading">INST377 - Lab 4</h1>
+
+    <div class="container">
+
+        <div class="section">
+            <form id="alertForm">
+                <label for="name">Enter your name:</label>
+                <input type="text" id="name" name="name" required>
+                <button type="button" onclick="alertName()">Alert Me</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <button id="colorButton" onclick="changeColor()">Change Color</button>
+        </div>
+
+        <div class="section">
+            <form id="textTesterForm">
+                <label for="textInput">Enter text to validate:</label>
+                <input type="text" id="textInput" name="textInput">
+                <button type="button" onclick="validateText()">Validate Text</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <button id="addTextButton" onclick="addText()">Add Text</button>
+        </div>
+
+    </div>
+
+    <script>
+        function alertName() {
+            const name = document.getElementById('name').value;
+            if (name) {
+                alert(`Hi ${name}!`);
+            }
+        }
+
+        let blue = true;
+        function changeColor() {
+            if (blue) {
+                document.body.style.backgroundColor = "pink";
+            } else {
+                document.body.style.backgroundColor = "purple";
+            }
+            blue = !blue;
+        }
+
+        function validateText() {
+            const text = document.getElementById('textInput').value;
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (validation.test(text)) {
+                alert("How about.... nah :(");
+            } else {
+                alert("Text is valid :P");
+            }
+        }
+
+        function addText() {
+            const heading = document.getElementById('heading');
+            heading.innerHTML += " Add Text";
+        }
+    </script>
+
+</body>
+</html>
